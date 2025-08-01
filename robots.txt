@@ -1,0 +1,89 @@
+# robots.txt - Friendbound.org
+# 告诉搜索引擎和AI爬虫哪些内容可以访问
+
+# 常规搜索引擎规则
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /404
+Disallow: /500
+Disallow: /*.json$
+
+# 网站地图
+Sitemap: https://friendbound.org/sitemap.xml
+
+# AI爬虫特定规则
+User-agent: GPTBot
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /blog/
+Allow: /support-groups/
+Allow: /resources/
+Allow: /about-us/
+Allow: /events/
+Disallow: /
+
+User-agent: Claude-Web
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /blog/
+Allow: /support-groups/
+Allow: /resources/
+Allow: /about-us/
+Allow: /events/
+Disallow: /
+
+User-agent: anthropic-ai
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /blog/
+Allow: /support-groups/
+Allow: /resources/
+Allow: /about-us/
+Allow: /events/
+Disallow: /
+
+User-agent: PerplexityBot
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /blog/
+Allow: /support-groups/
+Allow: /resources/
+Allow: /about-us/
+Allow: /events/
+Disallow: /
+
+User-agent: GoogleOther
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /blog/
+Allow: /support-groups/
+Allow: /resources/
+Allow: /about-us/
+Allow: /events/
+Disallow: /
+
+User-agent: DuckAssistBot
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /blog/
+Allow: /support-groups/
+Allow: /resources/
+Allow: /about-us/
+Allow: /events/
+Disallow: /
+
+# 不允许AI爬虫访问的内容
+Disallow: /user-content/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /404
+Disallow: /500
+Disallow: /*.json$ 

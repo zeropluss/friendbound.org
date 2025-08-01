@@ -1,0 +1,27 @@
+# Friendbound.org
+
+> Friendbound.org是一个安全、专业的在线心理健康支持社区，为焦虑、抑郁、创伤后应激障碍等心理健康问题提供同伴支持和专业资源。
+
+我们致力于打破心理健康污名，通过24/7在线支持小组、专业资源和同伴连接，为需要心理健康支持的人们创造一个安全、包容的环境。我们的社区由心理健康专业人士监督，确保所有对话都保持支持性、尊重性和安全性。
+
+## 核心内容
+- [支持小组](https://friendbound.org/support-groups/): 针对不同心理健康状况的专业支持小组，包括焦虑、抑郁、创伤后应激障碍、悲伤与失去等
+- [心理健康资源](https://friendbound.org/resources/): 专业心理健康文章、应对策略、危机帮助和自助工具
+- [社区活动](https://friendbound.org/events/): 在线工作坊、专家讲座和社区活动
+- [博客](https://friendbound.org/blog/): 心理健康教育文章、康复故事和专家见解
+
+## 常用资源
+- [危机帮助](https://friendbound.org/resources/crisis-help.html): 紧急心理健康支持和危机干预资源
+- [专业目录](https://friendbound.org/resources/professional-directory.html): 认证心理健康专业人士的推荐
+- [自助工具](https://friendbound.org/resources/self-help-tools.html): 实用的心理健康自助技巧和练习
+- [社区指南](https://friendbound.org/community/guidelines.html): 社区行为准则和安全标准
+
+## 关于我们
+- [关于我们](https://friendbound.org/about-us/): 我们的使命、价值观和团队介绍
+- [信任与安全](https://friendbound.org/trust-safety/): 隐私保护、安全措施和社区监督政策
+- [联系我们](https://friendbound.org/contact/): 获取帮助和联系我们的方式
+
+## 可选
+- [隐私政策](https://friendbound.org/privacy-policy.html): 数据保护和隐私政策详情
+- [服务条款](https://friendbound.org/terms-of-service.html): 使用条款和条件
+- [权限政策](https://friendbound.org/permissions-policy.html): 内容使用和分享政策 
