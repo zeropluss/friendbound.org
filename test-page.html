@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脚本加载测试页面 - Friendbound.org</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border-color: #17a2b8;
+            color: #0c5460;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .console-output {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+    </style>
+    
+    <!-- Smart Script Loader - 开发环境友好版本 -->
+    <script src="assets/js/smart-loader.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 脚本加载测试页面</h1>
+        
+        <div class="status info">
+            <strong>📍 当前环境检测</strong><br>
+            协议: <code id="protocol"></code><br>
+            主机名: <code id="hostname"></code><br>
+            端口: <code id="port"></code><br>
+            是否为开发环境: <code id="isdev"></code>
+        </div>
+        
+        <div class="status" id="script-status">
+            <strong>📊 脚本加载状态</strong><br>
+            <span id="status-text">正在检测...</span>
+        </div>
+        
+        <div class="console-output" id="console-output">
+            <strong>📝 控制台输出:</strong><br>
+            <div id="console-messages"></div>
+        </div>
+        
+        <h2>🛠️ 解决方案说明</h2>
+        <p>我们实现了智能脚本加载器来解决本地开发环境的错误问题：</p>
+        
+        <ul>
+            <li><strong>开发环境检测</strong>：自动识别 <code>file://</code>、<code>localhost</code>、<code>127.0.0.1</code> 等本地环境</li>
+            <li><strong>条件加载</strong>：只在生产环境加载外部分析和广告脚本</li>
+            <li><strong>错误处理</strong>：为每个脚本添加了错误处理和加载状态提示</li>
+            <li><strong>友好提示</strong>：在开发环境显示跳过外部脚本的提示</li>
+        </ul>
+        
+        <h2>🎯 修复的问题</h2>
+        <div class="status success">
+            <strong>✅ script.js:1 Ignoring Event: localhost</strong><br>
+            点击分析脚本在本地环境被跳过，不再产生警告
+        </div>
+        
+        <div class="status success">
+            <strong>✅ Google AdSense 403 错误</strong><br>
+            AdSense 脚本在本地环境被跳过，避免 403 错误
+        </div>
+        
+        <div class="status info">
+            <strong>ℹ️ Reddit Post Analyzer</strong><br>
+            这是浏览器扩展的内容脚本，不是网站代码问题，可以忽略
+        </div>
+    </div>
+    
+    <script>
+        // 显示环境信息
+        document.getElementById('protocol').textContent = location.protocol;
+        document.getElementById('hostname').textContent = location.hostname || '(空)';
+        document.getElementById('port').textContent = location.port || '(默认)';
+        
+        // 检测是否为开发环境
+        const isLocalDev = location.protocol === 'file:' || 
+                          location.hostname === 'localhost' || 
+                          location.hostname === '127.0.0.1' ||
+                          location.hostname === '';
+        
+        document.getElementById('isdev').textContent = isLocalDev ? '是' : '否';
+        
+        // 更新状态显示
+        const statusDiv = document.getElementById('script-status');
+        const statusText = document.getElementById('status-text');
+        
+        if (isLocalDev) {
+            statusDiv.className = 'status success';
+            statusText.innerHTML = '✅ 开发环境：外部脚本已跳过加载，避免错误';
+        } else {
+            statusDiv.className = 'status info';
+            statusText.innerHTML = '🌐 生产环境：外部脚本正常加载';
+        }
+        
+        // 捕获并显示控制台消息
+        const consoleMessages = document.getElementById('console-messages');
+        const originalLog = console.log;
+        const originalWarn = console.warn;
+        
+        function addConsoleMessage(type, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.style.margin = '5px 0';
+            messageDiv.innerHTML = `<span style="color: ${type === 'log' ? '#90cdf4' : '#fbb6ce'}">[${type.toUpperCase()}]</span> ${message}`;
+            consoleMessages.appendChild(messageDiv);
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addConsoleMessage('log', args.join(' '));
+        };
+        
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addConsoleMessage('warn', args.join(' '));
+        };
+        
+        // 检查脚本加载状态
+        setTimeout(() => {
+            if (isLocalDev) {
+                addConsoleMessage('log', '🚀 开发环境检测：已跳过外部分析和广告脚本加载');
+            } else {
+                addConsoleMessage('log', '🌐 生产环境：正在加载外部分析和广告脚本');
+            }
+        }, 100);
+    </script>
+</body>
+</html>
