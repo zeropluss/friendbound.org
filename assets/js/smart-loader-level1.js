@@ -34,7 +34,7 @@
     const clickScript = document.createElement('script');
     clickScript.defer = true;
     clickScript.setAttribute('data-domain', 'friendbound.org');
-    clickScript.src = 'https://click.pageview.click/js/script.js';
+    clickScript.src = 'https://app.pageview.app/js/script.js';
     clickScript.onerror = function() {
       console.warn('⚠️ 点击分析脚本加载失败');
     };
